@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script src="../react/react.development.js"></script>
+    <script src="../react/react-dom.development.js"></script>
+    <script src="../react/babel.min.js"></script>
+
+    <script type="text/babel">
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            /* jsx中注释要这样写 */
+            /* 在{}中能够正常显示的基础数据类型*/
+            number: 1,
+            array: ["123", "456"],
+            string: "字符串",
+            /*null, undefined, boolean不能够正常显示(忽略)  */
+            null: null,
+            undefined: undefined,
+            boolean: true,
+            object: {
+              name: "jsomin",
+              age: 18,
+            },
+          };
+        }
+
+        render() {
+          /* return后面的jsx用括号括起来是因为方便换行*/
+          return (
+            <div>
+              <div>{this.state.number}</div>
+              <div>{this.state.string}</div>
+              <div>{this.state.array}</div>
+              <div>{this.state.null + ""}</div>
+              <div>{this.state.undefined + ""}</div>
+              <div>{this.state.boolean.toString()}</div>
+              <div>{this.state.object}</div>
+              /* 只有布尔值具有toString方法*/ /* 对象不能作为jsx的子类*/
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>
